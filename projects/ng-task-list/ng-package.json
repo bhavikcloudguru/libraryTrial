@@ -1,0 +1,9 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/ng-task-list",
+  "lib": {
+    "entryFile": "src/public-api.ts",
+    "cssUrl": "inline"
+  },
+  "assets": ["scss/**/*.scss", "./styles.scss"]
+}

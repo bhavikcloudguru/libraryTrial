@@ -1,0 +1,46 @@
+<div class="d-flex flex-row flex-wrap bd-highlight mb-3 flex-container">
+  <ng-container *ngFor="let status of taskStatuses">
+    <ng-container [ngSwitch]="status.name">
+      <div
+        class="p-2 mt-2 mr-2 bd-highlight task-list-item"
+        *ngSwitchCase="status.name"
+      >
+        <h3>{{ status?.label }}</h3>
+        <app-task-list-item
+          *ngFor="let item of taskList | filterData: 'status':status.name"
+          [taskDetails]="item"
+        >
+        </app-task-list-item>
+        <button
+          class="btn btn-primary"
+          aria-label="Add new card"
+          *ngIf="!status?.showAddCardForm"
+          (click)="addCardClicked.emit(status.name)"
+        >
+          + Add a card
+        </button>
+        <app-add-card
+          *ngIf="status?.showAddCardForm"
+          (addCardTolist)="
+            addCardTolist.emit({ name: $event, status: status.name })
+          "
+          (cancelAddCardClicked)="cancelAddCardClicked.emit(status.name)"
+        ></app-add-card>
+      </div>
+    </ng-container>
+  </ng-container>
+  <div class="p-2 bd-highlight">
+    <button
+      class="button btn btn-primary"
+      aria-label="Add another list"
+      (click)="addItemToListButtonClicked.emit()"
+    >
+      + Add another list
+    </button>
+    <app-add-list-form
+      *ngIf="isAddListClicked"
+      (addItemToList)="addItemToList.emit($event)"
+      (cancelClicked)="cancelClicked.emit()"
+    ></app-add-list-form>
+  </div>
+</div>

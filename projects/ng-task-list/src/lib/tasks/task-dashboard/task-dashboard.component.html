@@ -1,0 +1,13 @@
+<div class="error-msg ml-4 mt-1" *ngIf="listExistsError">List already exists.</div>
+
+<app-task-list
+  [taskList]="taskList"
+  [taskStatuses]="taskStatuses"
+  [isAddListClicked]="isAddListClicked"
+  (addItemToListButtonClicked)="addItemToListButtonClicked()"
+  (addCardClicked)="addCardClicked($event)"
+  (addCardTolist)="addCardTolist($event)"
+  (addItemToList)="addItemToList($event)"
+  (cancelClicked)="cancelClicked()"
+  (cancelAddCardClicked)="cancelAddCardClicked($event)"
+></app-task-list>

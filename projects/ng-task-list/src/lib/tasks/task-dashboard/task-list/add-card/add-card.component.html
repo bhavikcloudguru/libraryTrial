@@ -1,0 +1,28 @@
+<form [formGroup]="addCardForm" class="mw-170 form" (keyup.enter)="addCard()">
+  <label for="cardname"> Card Name: </label>
+  <input
+    type="text"
+    class="form-control"
+    formControlName="name"
+    autocomplete="off"
+    id="cardname"
+    maxlength="150"
+  />
+  <button
+    type="button"
+    aria-label="Save card"
+    class="btn btn-primary mt-2"
+    [disabled]="!addCardForm.valid"
+    (click)="addCard()"
+  >
+    Save card
+  </button>
+  <button
+    type="button"
+    aria-label="Cancel"
+    class="btn btn-secondary mt-2 ml-1"
+    (click)="cancelAddCardClicked.emit()"
+  >
+    Cancel
+  </button>
+</form>

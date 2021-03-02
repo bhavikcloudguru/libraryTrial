@@ -1,0 +1,23 @@
+<form [formGroup]="createListItemForm" class="mw-170 form mt-2" (keyup.enter)="addlistItemClicked()">
+  <label for="listname"> List Name: </label>
+  <input
+    type="text"
+    class="form-control"
+    autocomplete="off"
+    formControlName="listname"
+    id="listname"
+    maxlength="150"
+  />
+  <button
+    type="button"
+    aria-label="Save list"
+    class="btn btn-primary mt-2"
+    [disabled]="!createListItemForm.valid"
+    (click)="addlistItemClicked()"
+  >
+    Save list
+  </button>
+  <button type="button" aria-label="Cancel" class="btn btn-secondary mt-2 ml-1" (click)="cancelClicked.emit()">
+    Cancel
+  </button>
+</form>
